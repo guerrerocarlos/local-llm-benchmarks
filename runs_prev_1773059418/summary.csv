@@ -1,0 +1,3 @@
+alias,model,pull_ok,gen_ok,test_ok,passed,total,score,gen_seconds
+qwen25_coder_14b,qwen2.5-coder:14b,1,1,0,9,12,75,17
+qwen3_coder_30b,qwen3-coder:30b,1,1,0,11,12,91.7,47

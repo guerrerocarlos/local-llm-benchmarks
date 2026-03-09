@@ -1,0 +1,13 @@
+/home/gnu/local-llm-tests/benchmark/evaluator/run-tests.js:152
+        if (x === 2) throw new Error('boom');
+                           ^
+
+Error: boom
+    at /home/gnu/local-llm-tests/benchmark/evaluator/run-tests.js:152:28
+    at runNext (/home/gnu/local-llm-tests/runs/qwen25_coder_14b/solution.js:100:26)
+    at Object.mapLimit (/home/gnu/local-llm-tests/runs/qwen25_coder_14b/solution.js:112:18)
+    at /home/gnu/local-llm-tests/benchmark/evaluator/run-tests.js:150:17
+    at test (/home/gnu/local-llm-tests/benchmark/evaluator/run-tests.js:25:13)
+    at run (/home/gnu/local-llm-tests/benchmark/evaluator/run-tests.js:146:9)
+
+Node.js v24.14.0

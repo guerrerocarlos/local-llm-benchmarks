@@ -1,0 +1,60 @@
+{
+  "passed": 7,
+  "total": 12,
+  "score": 58.3,
+  "results": [
+    {
+      "name": "exports are present",
+      "pass": true
+    },
+    {
+      "name": "LRU basic set/get/has/delete",
+      "pass": true
+    },
+    {
+      "name": "LRU eviction order",
+      "pass": false,
+      "error": "b should be evicted"
+    },
+    {
+      "name": "LRU set existing promotes recency",
+      "pass": false,
+      "error": "b evicted"
+    },
+    {
+      "name": "TTL expiration with default ttl",
+      "pass": true
+    },
+    {
+      "name": "TTL override and immediate expiration",
+      "pass": true
+    },
+    {
+      "name": "keys() order MRU -> LRU and ignores expired",
+      "pass": true
+    },
+    {
+      "name": "size() counts only non-expired",
+      "pass": true
+    },
+    {
+      "name": "mapLimit preserves order and values",
+      "pass": false,
+      "error": "got ,,"
+    },
+    {
+      "name": "mapLimit enforces concurrency limit",
+      "pass": true
+    },
+    {
+      "name": "mapLimit supports sync mapper",
+      "pass": false,
+      "error": "got ,,"
+    },
+    {
+      "name": "mapLimit rejects on first error",
+      "pass": false,
+      "error": "should reject with mapper error"
+    }
+  ]
+}

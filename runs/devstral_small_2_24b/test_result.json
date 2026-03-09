@@ -1,0 +1,12 @@
+{
+  "passed": 0,
+  "total": 1,
+  "score": 0,
+  "results": [
+    {
+      "name": "module loads",
+      "pass": false,
+      "error": "SyntaxError: Unexpected end of input"
+    }
+  ]
+}

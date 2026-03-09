@@ -1,0 +1,7 @@
+model_group,resolved_tag,status
+qwen25,,failed
+qwen3,,failed
+deepseekv2lite,,failed
+deepcoder14b,,failed
+devstral_small,,failed
+devstral2_24b,,failed

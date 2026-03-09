@@ -1,0 +1,6 @@
+alias,model,passed,total,score,recheck_status
+deepcoder_14b,deepcoder:14b,0,1,0,FAIL
+deepseek_coder_v2_16b,deepseek-coder-v2:16b,7,12,58.3,FAIL
+devstral_small_2_24b,devstral-small-2:24b,0,1,0,FAIL
+qwen25_coder_14b,qwen2.5-coder:14b,7,12,58.3,FAIL
+qwen3_coder_30b,qwen3-coder:30b,11,12,91.7,FAIL

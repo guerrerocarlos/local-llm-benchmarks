@@ -1,0 +1,38 @@
+[2026-03-09T09:12:07-03:00] trying qwen25 => qwen2.5-coder:14b
+Error: could not connect to ollama server, run 'ollama serve' to start it
+[2026-03-09T09:12:07-03:00] trying qwen25 => qwen2.5-coder:14b-instruct
+Error: could not connect to ollama server, run 'ollama serve' to start it
+[2026-03-09T09:12:07-03:00] trying qwen25 => qwen2.5-coder:latest
+Error: could not connect to ollama server, run 'ollama serve' to start it
+[2026-03-09T09:12:07-03:00] WARNING: could not resolve qwen25
+[2026-03-09T09:12:07-03:00] trying qwen3 => qwen3-coder:14b
+Error: could not connect to ollama server, run 'ollama serve' to start it
+[2026-03-09T09:12:07-03:00] trying qwen3 => qwen3-coder:14b-instruct
+Error: could not connect to ollama server, run 'ollama serve' to start it
+[2026-03-09T09:12:07-03:00] trying qwen3 => qwen3:14b
+Error: could not connect to ollama server, run 'ollama serve' to start it
+[2026-03-09T09:12:07-03:00] WARNING: could not resolve qwen3
+[2026-03-09T09:12:07-03:00] trying deepseekv2lite => deepseek-coder-v2:16b
+Error: could not connect to ollama server, run 'ollama serve' to start it
+[2026-03-09T09:12:07-03:00] trying deepseekv2lite => deepseek-coder-v2:lite
+Error: could not connect to ollama server, run 'ollama serve' to start it
+[2026-03-09T09:12:07-03:00] trying deepseekv2lite => deepseek-coder-v2
+Error: could not connect to ollama server, run 'ollama serve' to start it
+[2026-03-09T09:12:07-03:00] WARNING: could not resolve deepseekv2lite
+[2026-03-09T09:12:07-03:00] trying deepcoder14b => deepcoder:14b
+Error: could not connect to ollama server, run 'ollama serve' to start it
+[2026-03-09T09:12:07-03:00] trying deepcoder14b => deepcoder:latest
+Error: could not connect to ollama server, run 'ollama serve' to start it
+[2026-03-09T09:12:07-03:00] WARNING: could not resolve deepcoder14b
+[2026-03-09T09:12:07-03:00] trying devstral_small => devstral:small
+Error: could not connect to ollama server, run 'ollama serve' to start it
+[2026-03-09T09:12:07-03:00] trying devstral_small => devstral:latest
+Error: could not connect to ollama server, run 'ollama serve' to start it
+[2026-03-09T09:12:07-03:00] WARNING: could not resolve devstral_small
+[2026-03-09T09:12:07-03:00] trying devstral2_24b => devstral2:24b
+Error: could not connect to ollama server, run 'ollama serve' to start it
+[2026-03-09T09:12:07-03:00] trying devstral2_24b => devstral:24b
+Error: could not connect to ollama server, run 'ollama serve' to start it
+[2026-03-09T09:12:07-03:00] trying devstral2_24b => devstral2:latest
+Error: could not connect to ollama server, run 'ollama serve' to start it
+[2026-03-09T09:12:07-03:00] WARNING: could not resolve devstral2_24b

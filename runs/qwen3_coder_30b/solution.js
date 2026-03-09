@@ -1,0 +1,121 @@
+class LRUCache {
+  constructor({ maxSize, ttlMs = Infinity, now = () => Date.now() }) {
+    this.maxSize = maxSize;
+    this.ttlMs = ttlMs;
+    this.now = now;
+    this.cache = new Map();
+  }
+
+  _cleanup() {
+    const now = this.now();
+    for (const [key, entry] of this.cache.entries()) {
+      if (entry.expiry <= now) {
+        this.cache.delete(key);
+      }
+    }
+  }
+
+  _updateKey(key) {
+    const entry = this.cache.get(key);
+    if (entry) {
+      this.cache.delete(key);
+      this.cache.set(key, entry);
+    }
+  }
+
+  set(key, value, ttlMsOverride = null) {
+    this._cleanup();
+    const now = this.now();
+    const ttl = ttlMsOverride !== null ? ttlMsOverride : this.ttlMs;
+    if (ttl <= 0) return false;
+
+    const expiry = now + ttl;
+    const entry = { value, expiry };
+
+    if (this.cache.has(key)) {
+      this.cache.delete(key);
+    } else if (this.cache.size >= this.maxSize) {
+      const firstKey = this.cache.keys().next().value;
+      this.cache.delete(firstKey);
+    }
+
+    this.cache.set(key, entry);
+    return true;
+  }
+
+  get(key) {
+    this._cleanup();
+    const entry = this.cache.get(key);
+    if (!entry) return undefined;
+    if (entry.expiry <= this.now()) {
+      this.cache.delete(key);
+      return undefined;
+    }
+    this._updateKey(key);
+    return entry.value;
+  }
+
+  has(key) {
+    this._cleanup();
+    const entry = this.cache.get(key);
+    if (!entry) return false;
+    if (entry.expiry <= this.now()) {
+      this.cache.delete(key);
+      return false;
+    }
+    this._updateKey(key);
+    return true;
+  }
+
+  delete(key) {
+    this._cleanup();
+    return this.cache.delete(key);
+  }
+
+  size() {
+    this._cleanup();
+    return this.cache.size;
+  }
+
+  keys() {
+    this._cleanup();
+    return Array.from(this.cache.keys());
+  }
+}
+
+async function mapLimit(items, limit, mapper) {
+  if (limit <= 0) return [];
+  if (!items || !Array.isArray(items)) return [];
+
+  const results = new Array(items.length);
+  let error = null;
+
+  const runTask = async (index) => {
+    if (error) return;
+    try {
+      const result = await Promise.resolve(mapper(items[index], index));
+      results[index] = result;
+    } catch (err) {
+      error = err;
+      throw err;
+    }
+  };
+
+  const tasks = [];
+  for (let i = 0; i < items.length; i++) {
+    if (error) break;
+    const task = runTask(i);
+    tasks.push(task);
+    if (tasks.length >= limit) {
+      await Promise.race(tasks);
+      tasks.shift();
+    }
+  }
+
+  await Promise.all(tasks);
+  if (error) throw error;
+
+  return results;
+}
+
+module.exports = { LRUCache, mapLimit };

@@ -1,0 +1,109 @@
+```javascript
+class LRUCache {
+  constructor({ maxSize, ttlMs = Infinity, now = () => Date.now() }) {
+    this.maxSize = maxSize;
+    this.ttlMs = ttlMs;
+    this.now = now;
+    this.cache = new Map();
+  }
+
+  set(key, value, ttlMsOverride) {
+    const ttl = ttlMsOverride !== undefined ? ttlMsOverride : this.ttlMs;
+    const expiresAt = ttl > 0 ? this.now() + ttl : 0;
+    const entry = { value, expiresAt };
+    this.cache.delete(key);
+    this.cache.set(key, entry);
+    if (this.cache.size > this.maxSize) {
+      for (const [k, v] of this.cache) {
+        if (v.expiresAt > 0 && v.expiresAt <= this.now()) {
+          this.cache.delete(k);
+        } else {
+          break;
+        }
+      }
+      if (this.cache.size > this.maxSize) {
+        const firstKey = this.cache.keys().next().value;
+        this.cache.delete(firstKey);
+      }
+    }
+  }
+
+  get(key) {
+    const entry = this.cache.get(key);
+    if (entry && (entry.expiresAt <= 0 || entry.expiresAt > this.now())) {
+      this.cache.delete(key);
+      this.cache.set(key, entry);
+      return entry.value;
+    }
+    this.cache.delete(key);
+    return undefined;
+  }
+
+  has(key) {
+    const entry = this.cache.get(key);
+    if (entry && (entry.expiresAt <= 0 || entry.expiresAt > this.now())) {
+      return true;
+    }
+    this.cache.delete(key);
+    return false;
+  }
+
+  delete(key) {
+    return this.cache.delete(key);
+  }
+
+  size() {
+    let count = 0;
+    for (const [, { expiresAt }] of this.cache) {
+      if (expiresAt <= 0 || expiresAt > this.now()) {
+        count++;
+      }
+    }
+    return count;
+  }
+
+  keys() {
+    const keys = [];
+    for (const [key, { expiresAt }] of this.cache) {
+      if (expiresAt <= 0 || expiresAt > this.now()) {
+        keys.unshift(key);
+      }
+    }
+    return keys;
+  }
+}
+
+async function mapLimit(items, limit, mapper) {
+  const results = new Array(items.length);
+  const pending = [];
+  let currentIndex = 0;
+
+  const next = async () => {
+    while (currentIndex < items.length && pending.length < limit) {
+      const index = currentIndex++;
+      const item = items[index];
+      const promise = Promise.resolve(mapper(item, index));
+      pending.push(promise);
+      promise.then(
+        result => {
+          results[index] = result;
+          pending.splice(pending.indexOf(promise), 1);
+          next();
+        },
+        error => {
+          for (const p of pending) {
+            p.reject(error);
+          }
+          throw error;
+        }
+      );
+    }
+  };
+
+  await next();
+  return results;
+}
+
+module.exports = { LRUCache, mapLimit };
+```
+

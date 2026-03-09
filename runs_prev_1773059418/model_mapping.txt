@@ -1,0 +1,7 @@
+Requested -> Evaluated model tag
+Qwen 2.5 Coder 14B Instruct -> qwen2.5-coder:14b
+Qwen 3 Coder 14B Instruct -> qwen3-coder:30b (14b tag not available on Ollama)
+DeepSeek Coder V2 Lite -> deepseek-coder-v2:16b
+DeepCoder 14B -> deepcoder:14b
+Devstral Small -> devstral-small-2:24b
+Devstral 2 ~24B -> devstral-small-2:24b (devstral-2 is 123b)
