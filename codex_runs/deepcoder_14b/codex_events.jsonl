@@ -1,0 +1,5 @@
+{"type":"thread.started","thread_id":"019cd2d0-5d89-7962-a2dd-6f6106eaefc3"}
+{"type":"item.completed","item":{"id":"item_0","type":"error","message":"Model metadata for `deepcoder:14b` not found. Defaulting to fallback metadata; this can degrade performance and cause issues."}}
+{"type":"turn.started"}
+{"type":"error","message":"{\"error\":{\"message\":\"registry.ollama.ai/library/deepcoder:14b does not support tools\",\"type\":\"api_error\",\"param\":null,\"code\":null}}\n"}
+{"type":"turn.failed","error":{"message":"{\"error\":{\"message\":\"registry.ollama.ai/library/deepcoder:14b does not support tools\",\"type\":\"api_error\",\"param\":null,\"code\":null}}\n"}}

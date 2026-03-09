@@ -1,0 +1,6 @@
+alias,model,codex_ok,test_ok,passed,total,score,wall_seconds,output_tokens,tok_per_s
+qwen25_coder_14b,qwen2.5-coder:14b,1,0,10,12,83.3,17,636,37.41
+qwen3_coder_30b,qwen3-coder:30b,1,0,0,1,0,39,282,7.23
+deepseek_coder_v2_16b,deepseek-coder-v2:16b,0,0,0,0,0,0,0,0
+deepcoder_14b,deepcoder:14b,0,0,0,0,0,0,0,0
+devstral_small_2_24b,devstral-small-2:24b,1,0,0,1,0,33,99,3.00

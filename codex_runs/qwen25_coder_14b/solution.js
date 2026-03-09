@@ -1,0 +1,92 @@
+class LRUCache {
+  constructor({ maxSize, ttlMs = Infinity, now = () => Date.now() }) {
+    if (maxSize <= 0) throw new Error('maxSize must be a positive integer');
+    this.maxSize = maxSize;
+    this.ttlMs = ttlMs;
+    this.now = now;
+    this.cache = new Map();
+    this.usageOrder = [];
+  }
+
+  set(key, value, ttlMsOverride = null) {
+    const ttl = ttlMsOverride !== null ? ttlMsOverride : this.ttlMs;
+    const expires = ttl > 0 ? this.now() + ttl : 0;
+    const entry = { value, expires };
+
+    if (this.cache.has(key)) {
+      this.usageOrder = this.usageOrder.filter(k => k !== key);
+    } else if (this.cache.size >= this.maxSize) {
+      const [lruKey] = this.usageOrder;
+      if (lruKey) {
+        this.cache.delete(lruKey);
+        this.usageOrder.shift();
+      }
+    }
+
+    this.cache.set(key, entry);
+    this.usageOrder.push(key);
+  }
+
+  get(key) {
+    const entry = this.cache.get(key);
+    if (!entry || entry.expires <= this.now()) {
+      this.cache.delete(key);
+      return undefined;
+    }
+    this.usageOrder = this.usageOrder.filter(k => k !== key);
+    this.usageOrder.push(key);
+    return entry.value;
+  }
+
+  has(key) {
+    const entry = this.cache.get(key);
+    return entry && entry.expires > this.now();
+  }
+
+  delete(key) {
+    const hadKey = this.cache.has(key);
+    if (hadKey) {
+      this.cache.delete(key);
+      this.usageOrder = this.usageOrder.filter(k => k !== key);
+    }
+    return hadKey;
+  }
+
+  size() {
+    return Array.from(this.cache.values()).filter(entry => entry.expires > this.now()).length;
+  }
+
+  keys() {
+    return Array.from(this.cache.keys()).filter(key => this.cache.get(key).expires > this.now());
+  }
+}
+
+async function mapLimit(items, limit, mapper) {
+  const results = new Array(items.length);
+  const running = [];
+
+  const runNext = async (index) => {
+    if (index >= items.length) return;
+    const item = items[index];
+    const promise = mapper(item, index);
+    running.push(promise);
+    promise.then(result => results[index] = result, error => {
+      running.splice(running.indexOf(promise), 1);
+      Promise.all(running.map(p => p.catch(() => {}))).then(() => {
+        throw error;
+      });
+    }).finally(() => {
+      running.splice(running.indexOf(promise), 1);
+      runNext(index + 1);
+    });
+  };
+
+  for (let i = 0; i < Math.min(limit, items.length); i++) {
+    runNext(i);
+  }
+
+  await Promise.all(running);
+  return results;
+}
+
+module.exports = { LRUCache, mapLimit };

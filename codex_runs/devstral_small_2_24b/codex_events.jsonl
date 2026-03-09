@@ -1,0 +1,5 @@
+{"type":"thread.started","thread_id":"019cd2d0-5ea9-7972-b32a-827034dfe78b"}
+{"type":"item.completed","item":{"id":"item_0","type":"error","message":"Model metadata for `devstral-small-2:24b` not found. Defaulting to fallback metadata; this can degrade performance and cause issues."}}
+{"type":"turn.started"}
+{"type":"item.completed","item":{"id":"item_1","type":"agent_message","text":"I was asked to use the `update_plan` tool, but it's not available. Let me know if there's anything else I can help with!"}}
+{"type":"turn.completed","usage":{"input_tokens":8192,"cached_input_tokens":0,"output_tokens":99}}

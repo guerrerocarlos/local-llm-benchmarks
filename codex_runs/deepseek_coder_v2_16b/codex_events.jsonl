@@ -1,0 +1,5 @@
+{"type":"thread.started","thread_id":"019cd2d0-5c84-7941-8649-2eeaf2416996"}
+{"type":"item.completed","item":{"id":"item_0","type":"error","message":"Model metadata for `deepseek-coder-v2:16b` not found. Defaulting to fallback metadata; this can degrade performance and cause issues."}}
+{"type":"turn.started"}
+{"type":"error","message":"{\"error\":{\"message\":\"registry.ollama.ai/library/deepseek-coder-v2:16b does not support tools\",\"type\":\"api_error\",\"param\":null,\"code\":null}}\n"}
+{"type":"turn.failed","error":{"message":"{\"error\":{\"message\":\"registry.ollama.ai/library/deepseek-coder-v2:16b does not support tools\",\"type\":\"api_error\",\"param\":null,\"code\":null}}\n"}}

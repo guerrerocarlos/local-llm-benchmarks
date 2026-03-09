@@ -1,0 +1,43 @@
+You are solving a JavaScript coding task.
+Return ONLY valid JavaScript code for one file.
+Do not include markdown fences.
+Do not include analysis, reasoning, or <think> content.
+
+Implement and export:
+1) class LRUCache
+2) async function mapLimit(items, limit, mapper)
+
+Rules for LRUCache:
+- Constructor signature: new LRUCache({ maxSize, ttlMs = Infinity, now = () => Date.now() })
+- maxSize is a positive integer.
+- set(key, value, ttlMsOverride) stores value.
+- get(key) returns value or undefined.
+- has(key) returns boolean.
+- delete(key) removes key and returns true/false.
+- size() returns count of NON-expired items.
+- keys() returns keys from most-recently-used to least-recently-used (non-expired only).
+- LRU policy:
+  - get() promotes key to most-recent.
+  - set() on existing key updates value and promotes it.
+  - When over maxSize, evict least-recent non-expired key.
+- TTL policy:
+  - Default TTL is constructor ttlMs.
+  - Per-entry ttlMsOverride overrides default.
+  - ttl <= 0 means item is immediately expired and not retained.
+  - Expired entries are removed lazily during read/write/keys/size.
+
+Rules for mapLimit:
+- Signature: mapLimit(items, limit, mapper)
+- items: array
+- limit: positive integer
+- mapper: async or sync function (item, index)
+- Return a Promise resolving to an array of mapped results in ORIGINAL order.
+- Run at most `limit` mapper calls concurrently.
+- Reject immediately on first mapper error.
+- Do not start new tasks after first rejection.
+
+Constraints:
+- Node.js 20+
+- No external dependencies.
+- Use CommonJS export:
+  module.exports = { LRUCache, mapLimit }
