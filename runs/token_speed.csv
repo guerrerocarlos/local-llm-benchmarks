@@ -1,0 +1,6 @@
+alias,model,eval_count,eval_duration_ns,tok_per_s,wall_s,prompt_eval_count,prompt_eval_duration_ns,done_reason
+qwen25_coder_14b,qwen2.5-coder:14b,638,9786691557,65.19,21.53,403,157649125,stop
+qwen3_coder_30b,qwen3-coder:30b,675,21013333913,32.12,31.91,382,784831165,stop
+deepseek_coder_v2_16b,deepseek-coder-v2:16b,692,4190020064,165.15,19.05,439,72383308,stop
+deepcoder_14b,deepcoder:14b,900,14453662847,62.27,24.70,377,133533003,length
+devstral_small_2_24b,devstral-small-2:24b,900,86568014989,10.40,99.78,948,1347040415,length
