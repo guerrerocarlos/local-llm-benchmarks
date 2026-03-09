@@ -1,0 +1,5 @@
+{"type":"thread.started","thread_id":"019cd2d8-c448-7500-afda-96f66bb8a693"}
+{"type":"item.completed","item":{"id":"item_0","type":"error","message":"Model metadata for `gemma3:4b` not found. Defaulting to fallback metadata; this can degrade performance and cause issues."}}
+{"type":"turn.started"}
+{"type":"error","message":"{\"error\":{\"message\":\"registry.ollama.ai/library/gemma3:4b does not support tools\",\"type\":\"api_error\",\"param\":null,\"code\":null}}\n"}
+{"type":"turn.failed","error":{"message":"{\"error\":{\"message\":\"registry.ollama.ai/library/gemma3:4b does not support tools\",\"type\":\"api_error\",\"param\":null,\"code\":null}}\n"}}

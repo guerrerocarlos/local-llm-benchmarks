@@ -1,0 +1,4 @@
+alias,model,codex_ok,test_ok,passed,total,score,wall_seconds,output_tokens,tok_per_s
+qwen25_coder_14b,qwen2.5-coder:14b,1,0,8,10,80,20,414,20.70
+glm4_9b,glm4:9b,0,0,0,0,0,0,0,0
+glm47_flash_q4km,glm-4.7-flash:q4_K_M,0,0,0,0,0,0,0,0

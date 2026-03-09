@@ -1,0 +1,10 @@
+{"type":"thread.started","thread_id":"019cd2e5-2bf7-7242-952f-3fa124826e8b"}
+{"type":"item.completed","item":{"id":"item_0","type":"error","message":"Model metadata for `glm-4.7-flash:q4_K_M` not found. Defaulting to fallback metadata; this can degrade performance and cause issues."}}
+{"type":"turn.started"}
+{"type":"error","message":"Reconnecting... 1/5 (stream disconnected before completion: Transport error: network error: error decoding response body)"}
+{"type":"error","message":"Reconnecting... 2/5 (stream disconnected before completion: error sending request for url (http://localhost:11434/v1/responses))"}
+{"type":"error","message":"Reconnecting... 3/5 (stream disconnected before completion: error sending request for url (http://localhost:11434/v1/responses))"}
+{"type":"error","message":"Reconnecting... 4/5 (stream disconnected before completion: error sending request for url (http://localhost:11434/v1/responses))"}
+{"type":"error","message":"Reconnecting... 5/5 (stream disconnected before completion: error sending request for url (http://localhost:11434/v1/responses))"}
+{"type":"error","message":"stream disconnected before completion: error sending request for url (http://localhost:11434/v1/responses)"}
+{"type":"turn.failed","error":{"message":"stream disconnected before completion: error sending request for url (http://localhost:11434/v1/responses)"}}

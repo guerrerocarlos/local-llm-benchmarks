@@ -1,0 +1,5 @@
+{"type":"thread.started","thread_id":"019cd2df-2e65-7df2-8825-58e75968e798"}
+{"type":"item.completed","item":{"id":"item_0","type":"error","message":"Model metadata for `glm4:9b` not found. Defaulting to fallback metadata; this can degrade performance and cause issues."}}
+{"type":"turn.started"}
+{"type":"error","message":"{\"error\":{\"message\":\"registry.ollama.ai/library/glm4:9b does not support tools\",\"type\":\"api_error\",\"param\":null,\"code\":null}}\n"}
+{"type":"turn.failed","error":{"message":"{\"error\":{\"message\":\"registry.ollama.ai/library/glm4:9b does not support tools\",\"type\":\"api_error\",\"param\":null,\"code\":null}}\n"}}

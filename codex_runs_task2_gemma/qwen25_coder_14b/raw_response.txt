@@ -1,0 +1,57 @@
+```javascript
+module.exports = { retryAsync, topKFrequentWords };
+
+async function retryAsync(fn, options = {}) {
+  const {
+    retries = 0,
+    minDelayMs = 0,
+    factor = 1,
+    jitter = 0,
+    shouldRetry = () => true,
+    signal = null,
+  } = options;
+
+  let attemptIndex = 0;
+
+  while (true) {
+    try {
+      return await fn(attemptIndex);
+    } catch (error) {
+      attemptIndex++;
+
+      if (attemptIndex > retries || (signal && signal.aborted) || !shouldRetry(error, attemptIndex)) {
+        throw error;
+      }
+
+      const delayMs = minDelayMs * Math.pow(factor, attemptIndex - 1);
+      const jitterMs = delayMs * jitter * (Math.random() * 2 - 1);
+      const effectiveDelayMs = delayMs + jitterMs;
+
+      await new Promise(resolve => setTimeout(resolve, effectiveDelayMs));
+    }
+  }
+}
+
+function topKFrequentWords(text, k, options = {}) {
+  const { stopWords = [] } = options;
+
+  const wordPattern = /\b[\w']+\b/g;
+  const words = text.toLowerCase().match(wordPattern);
+
+  const wordCounts = new Map();
+
+  for (const word of words) {
+    if (stopWords.includes(word)) continue;
+    wordCounts.set(word, (wordCounts.get(word) || 0) + 1);
+  }
+
+  const sortedWords = Array.from(wordCounts.entries())
+    .sort((a, b) => {
+      if (b[1] !== a[1]) return b[1] - a[1];
+      return a[0].localeCompare(b[0]);
+    })
+    .slice(0, k);
+
+  return sortedWords.map(([word, count]) => ({ word, count }));
+}
+```

@@ -1,0 +1,49 @@
+{
+  "passed": 8,
+  "total": 10,
+  "score": 80,
+  "results": [
+    {
+      "name": "exports are present",
+      "pass": true
+    },
+    {
+      "name": "retryAsync succeeds first attempt",
+      "pass": true
+    },
+    {
+      "name": "retryAsync retries and succeeds",
+      "pass": true
+    },
+    {
+      "name": "retryAsync stops at retries limit",
+      "pass": true
+    },
+    {
+      "name": "retryAsync shouldRetry can short-circuit",
+      "pass": true
+    },
+    {
+      "name": "retryAsync honors abort signal",
+      "pass": false,
+      "error": "should reject as aborted"
+    },
+    {
+      "name": "topKFrequentWords basic counting/sorting",
+      "pass": true
+    },
+    {
+      "name": "topKFrequentWords case-insensitive + punctuation",
+      "pass": true
+    },
+    {
+      "name": "topKFrequentWords tie-break alphabetical",
+      "pass": true
+    },
+    {
+      "name": "topKFrequentWords stopWords + k=0",
+      "pass": false,
+      "error": "b:2,c:1"
+    }
+  ]
+}

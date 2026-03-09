@@ -1,0 +1,42 @@
+You are solving a JavaScript coding task.
+Return ONLY valid JavaScript code for one file.
+Do not include markdown fences.
+Do not include analysis, reasoning, or <think> content.
+
+Implement and export:
+1) async function retryAsync(fn, options)
+2) function topKFrequentWords(text, k, options = {})
+
+Requirements for retryAsync:
+- Signature: retryAsync(fn, options)
+- fn: async or sync function called as fn(attemptIndex), where first attemptIndex is 0.
+- options object fields:
+  - retries (integer >= 0): max retry attempts after first failure.
+  - minDelayMs (integer >= 0, default 0)
+  - factor (number >= 1, default 1) exponential backoff multiplier
+  - jitter (number between 0 and 1, default 0) randomization percentage
+  - shouldRetry(error, attemptIndex) optional predicate; if returns false, stop immediately
+  - signal optional AbortSignal; if aborted, reject with AbortError-like error
+- Behavior:
+  - Attempt fn immediately.
+  - On failure, retry until retries exhausted.
+  - Delay before each retry: minDelayMs * factor^(attemptIndex-1), where attemptIndex starts at 1 for first retry.
+  - If jitter > 0, apply random +/- jitter proportion to the computed delay.
+  - Reject with last error when out of retries.
+
+Requirements for topKFrequentWords:
+- Signature: topKFrequentWords(text, k, options = {})
+- text is string, k is integer >= 0.
+- Case-insensitive counting.
+- Consider words as sequences of letters/numbers/apostrophes; ignore punctuation otherwise.
+- options.stopWords: optional array of words to exclude (case-insensitive).
+- Return array of objects sorted by:
+  1) descending frequency
+  2) alphabetical ascending for ties
+- Shape: [{ word, count }, ...] with at most k entries.
+
+Constraints:
+- Node.js 20+
+- No external dependencies.
+- Use CommonJS export:
+  module.exports = { retryAsync, topKFrequentWords }

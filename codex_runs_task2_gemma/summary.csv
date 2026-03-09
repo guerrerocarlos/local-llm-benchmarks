@@ -1,0 +1,6 @@
+alias,model,codex_ok,test_ok,passed,total,score,wall_seconds,output_tokens,tok_per_s
+qwen25_coder_14b,qwen2.5-coder:14b,1,0,8,10,80,19,391,20.58
+qwen3_coder_30b,qwen3-coder:30b,1,0,0,1,0,42,302,7.19
+gemma3_4b,gemma3:4b,0,0,0,0,0,0,0,0
+gemma3_12b,gemma3:12b,0,0,0,0,0,0,0,0
+devstral_small_2_24b,devstral-small-2:24b,1,0,0,1,0,37,125,3.38
